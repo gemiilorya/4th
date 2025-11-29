@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="letter.css">
+    <title>Letter</title>
+</head>
+<body>
+    <h1>Happy 4th Monthsary</h1>
+    <p>Dear Wife,</p>
+    <p>Happy 4th monthsary! I just wanted to take a moment to tell you how much you mean to me. These past four months have been incredible, and I feel so lucky.</p>
+    <p>Your kindness, support, and love have made every day brighter. I cherish the memories we've created together and look forward to many more adventures.</p>
+    <p>Thank you for being you. Here's to us and to many more months and years ahead!</p>
+    <p>With all my love,</p>
+    <p>gemii</p>
+    <!-- Modal popup added without changing page layout -->
+    <div id="modalOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:1000;">
+        <div role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="background:#A7ABDE; padding:1rem 1.25rem; border-radius:8px; max-width:420px; width:90%; box-shadow:0 10px 30px rgba(0,0,0,0.2); text-align:center;">
+            <button id="modalClose" aria-label="Close" style="position:absolute; right:12px; top:10px; border:none; background:transparent; font-size:1.1rem; cursor:pointer">✕</button>
+            <h2 id="modalTitle" style="margin-top:0;">Surprise</h2>
+            <p>I have another surprise for you. Open it?</p>
+            <div style="margin-top:1rem;">
+                <button id="openSurprise" style="padding:0.5rem 1rem; font-size:1rem; cursor:pointer; border-radius: 50px; background-color: #ced1f8;">Open Surprise</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Non-intrusive popup: shows after full page load (won't change layout)
+        (function(){
+            const overlay = document.getElementById('modalOverlay');
+            const openBtn = document.getElementById('openSurprise');
+            const closeBtn = document.getElementById('modalClose');
+
+            function showModal() {
+                overlay.style.display = 'flex';
+                overlay.setAttribute('aria-hidden','false');
+            }
+
+            function hideModal() {
+                overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden','true');
+            }
+
+            // open surprise page
+            openBtn.addEventListener('click', function(){
+                window.location.href = 'cassette.html';
+            });
+
+            closeBtn.addEventListener('click', hideModal);
+
+            // clicking outside dialog closes modal
+            overlay.addEventListener('click', function(e){
+                if (e.target === overlay) hideModal();
+            });
+
+            // Show modal 5 seconds after the page finishes loading and the last paragraph is present.
+            // Using the window 'load' event ensures resources are loaded; then wait 5000ms.
+            window.addEventListener('load', function(){
+                const paragraphs = document.querySelectorAll('p');
+                // If there are paragraphs, consider the last one as "last paragraph loaded".
+                // Wait 5 seconds after load to show the modal.
+                setTimeout(showModal, 25000);
+            });
+        })();
+    </script>
+</body>
+</html>

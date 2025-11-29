@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carbonara Cooking Game</title>
+  <link rel="stylesheet" href="cook.css ">
+</head>
+<body>
+
+  <h1>Carbonara Game💜</h1>
+  <p>Drag the ingredients into the pot, then cook!</p>
+
+  <div class="game-area">
+    <!-- Ingredients -->
+    <div class="ingredients">
+      <h3>Ingredients</h3>
+      <img src="assets/pasta.png" alt="Pasta" draggable="true" id="pasta">
+      <img src="assets/bacon.png" alt="Bacon" draggable="true" id="bacon">
+      <img src="assets/egg.png" alt="Egg" draggable="true" id="egg">
+      <img src="assets/cheese.png" alt="Cheese" draggable="true" id="cheese">
+    </div>
+
+    <!-- Pot -->
+    <div class="pot-area" id="dropZone">
+      <h3>Pot</h3>
+      <img src="assets/pot.png" id="pot-image">
+      <div class="pot" id="pot-container">
+        <!-- Dropped ingredients will go here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="buttons">
+    <button onclick="cook()">Cook</button>
+    <button onclick="serve()">Serve</button>
+    <button onclick="resetGame()">Reset</button>
+  </div>
+
+  <div id="message"></div>
+
+  <!-- Audio Placeholders -->
+  <audio id="bgMusic" src="bg-music.mp3" loop></audio>
+  <audio id="dropSound" src="drop.mp3"></audio>
+  <audio id="cookSound" src="cook.mp3"></audio>
+  <audio id="serveSound" src="serve.mp3"></audio>
+  <script src="cook.js"></script>
+
+  <!-- Popup for animations -->
+  <div class="overlay"></div>
+  <div id="popup" class="popup">
+    <div class="popup-content">
+        <img id="popup-gif" src="assets/pot-stirring.gif" alt="Cooking Animation">
+    </div>
+  </div>
+  <div id="serve-popup" class="popup">
+    <div class="popup-content">
+        <div class="serve-container">
+            <img id="carbonara-img" src="assets/carbonara.png" alt="Carbonara Dish">
+            <div class="serve-steam"></div>
+        </div>
+        <button id="continue-btn" onclick="continueGame()">Continue</button>
+    </div>
+  </div>
+</body>
+</html>
